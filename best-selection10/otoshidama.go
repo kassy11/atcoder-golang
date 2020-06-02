@@ -11,6 +11,7 @@ func main() {
 			for k:=0; k<=n-i-j; k++{
 				if 10000*i+5000*j+1000*k == y{
 					fmt.Println(i, j, k)
+					return
 				}
 			}
 		}
