@@ -20,10 +20,9 @@ func main() {
 			maxnum = nums[l+1] - nums[l]
 		}
 	}
-	if nums[n-1] - nums[0] >= maxnum{
-		maxnum = nums[n-1] - nums[0]
+	if (k-nums[n-1]) + nums[0] >= maxnum{
+		maxnum = (k-nums[n-1]) + nums[0]
 	}
-	// maxnumを通らないようなルートを行く
 	fmt.Println(k - maxnum)
 
 }
