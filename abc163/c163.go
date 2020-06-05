@@ -12,13 +12,11 @@ func main() {
 
 	count_map := make(map[int]int)
 
-	for i:=1; i<=n; i++{
-		for m:=0; m<n-1; m++{
-			if i == nums[m]{
-				count_map[i] ++
-			}
-		}
-		fmt.Println(count_map[i])
+	for _, v := range nums{
+		count_map[v] ++
 	}
 
+	for i := 1; i <= n; i++ {
+		fmt.Println(count_map[i])
+	}
 }
