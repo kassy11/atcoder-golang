@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func checkDigit(num int) bool{
-	for i:=0; i<3; i++{
+	for num >= 0{
 		if num % 10 == 7{
 			return true
 		}
