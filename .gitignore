@@ -1,11 +1,11 @@
 ### https://raw.github.com/github/gitignore/db0ef78b5ad1d3caf4cab3240467562360885613/Go.gitignore
-
 # Binaries for programs and plugins
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
+
 
 # Test binary, built with `go test -c`
 *.test
@@ -119,3 +119,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+*
+!*/
+!*.go
