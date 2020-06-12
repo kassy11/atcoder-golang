@@ -36,7 +36,7 @@ func main(){
 			balance -= farelog[i]
 			point += float64(farelog[i]) * 0.1
 		}
-		fmt.Print(balance)
+		fmt.Printf("%d ", balance)
 		fmt.Println(point)
 	}
 
