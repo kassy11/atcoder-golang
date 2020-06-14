@@ -9,7 +9,7 @@ import (
 func main(){
 	var balance int
 	var point float64
-	var farelog []int
+	var fare []int
 
 	fmt.Print("C ")
 	fmt.Scan(&balance)
@@ -24,17 +24,17 @@ func main(){
 		if t == "end" {
 			break
 		}else{
-			num, _ := strconv.Atoi(t)
-			farelog = append(farelog, num)
+			scan_num, _ := strconv.Atoi(t)
+			fare = append(fare, scan_num)
 		}
 	}
 
-	for i:=0; i<len(farelog); i++{
-		if point >= float64(farelog[i]){
-			point -= float64(farelog[i])
+	for i:=0; i<len(fare); i++{
+		if point >= float64(fare[i]){
+			point -= float64(fare[i])
 		}else{
-			balance -= farelog[i]
-			point += float64(farelog[i]) * 0.1
+			balance -= fare[i]
+			point += float64(fare[i]) * 0.1
 		}
 		fmt.Printf("%d ", balance)
 		fmt.Println(point)
