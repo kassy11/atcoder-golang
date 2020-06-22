@@ -3,12 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	var n, k int
-	fmt.Scan(&n, &k)
+	var n int
+	fmt.Scan(&n)
 
 	count := 0
 	for n > 0{
-		n = n / k
+		n = n / 10
 		count++
 	}
 
