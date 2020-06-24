@@ -1,27 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
+
+func minSlice(num []int)int{
+	sort.Ints(num)
+	return num[0]
+}
 
 func main() {
 	var n int
-	var flag bool
 	fmt.Scan(&n)
-	count := 1
+	count := 0
 	p := make([]int, n)
+	pcopy := make([]int, n)
 	for i:=0; i<n; i++{
 		fmt.Scan(&p[i])
+		pcopy[i] = p[i]
 	}
-
-	for i:=1; i<n; i++{
-		for j:=0; j<i-1; j++{
-			if p[i] <= p[j]{
-				flag = true
-			}else{
-				flag = false
-				break
-			}
-		}
-		if flag == true{
+	// 前から走査して、そこまでのスライスの最小要素が最後の要素ならcount++
+	// 参照のせいでおかしくなってる、ソートされてる？？
+	for i:=1; i<=len(p); i++{
+		if minSlice(pcopy[0:i]) == p[i-1]{
 			count++
 		}
 	}
