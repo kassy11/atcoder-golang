@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	a := make([]int, 1)
-	b := make([]int, 1)
-	op := make([]string, 1)
+	a := make([]int, 10)
+	b := make([]int, 10)
+	op := make([]string, 10)
 
 	for {
 		var anum, bnum int
