@@ -14,17 +14,17 @@ func main() {
 		}
 
 		s := make([]int, n)
-		sum := 0
+		sum := 0.0
 		for i:=0; i<len(s); i++{
 			fmt.Scan(&s[i])
-			sum += s[i]
+			sum += float64(s[i])
 		}
-		average := sum / n
+		average := sum / float64(n)
 
-		bsum := 0
+		bsum := 0.0
 		for i:=0; i<len(s); i++{
-			bsum += (s[i]-average) * (s[i]-average)
+			bsum += (float64(s[i])-average) * (float64(s[i])-average)
 		}
-		fmt.Println(math.Sqrt(float64(bsum / n)))
+		fmt.Println(math.Sqrt(bsum / float64(n)))
 	}
 }
