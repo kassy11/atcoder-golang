@@ -2,27 +2,18 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 )
 
 func main() {
-	var a, b, x int
-	fmt.Scan(&a, &b, &x)
-
-	max := 0
-	buy := 0
-	for i:=1; i<1000000000; i++{
-		len := len(strconv.Itoa(i))
-		num := a*i + b*len
-		//fmt.Println(len, i)
-		//fmt.Println(a*i + b*len)
-		if num >x{
-			break
+	var A, B, X int
+	fmt.Scan(&A, &B, &X)
+	N := sort.Search(1e9+1, func(i int) bool {
+		if i == 0 {
+			return false
 		}
-		if num > max {
-			max = num
-			buy = i
-		}
-	}
-	fmt.Println(buy)
+		return A*i+B*len(strconv.Itoa(i)) > X
+	})
+	fmt.Println(N - 1)
 }
