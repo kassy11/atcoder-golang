@@ -12,6 +12,14 @@ func insertionsort(nums []int){
 			j--
 		}
 		nums[j+1] = v
+
+		for k:=0; k<len(nums); k++{
+			fmt.Print(nums[k])
+			if k != len(nums)-1{
+				fmt.Print(" ")
+			}
+		}
+		fmt.Println("")
 	}
 }
 
@@ -22,6 +30,13 @@ func main() {
 	for i:=0; i<len(nums); i++{
 		fmt.Scan(&nums[i])
 	}
+	for k:=0; k<len(nums); k++{
+		fmt.Print(nums[k])
+		if k != len(nums)-1{
+			fmt.Print(" ")
+		}
+	}
+	fmt.Println("")
 
 	insertionsort(nums)
 }
