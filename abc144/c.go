@@ -6,15 +6,18 @@ func main() {
 	var n int
 	fmt.Scan(&n)
 
-	min := n
-	for i:=1; i<=n; i++{
-		for j:=1; j<=n; j++{
-			if i*j == n && (i-1)+(j-1) < min{
-				min = (i-1)+(j-1)
-				break
-			}
+	mi := int(1e15 + 1)
+	for i := 1; i*i <= n; i++ {
+		if n%i == 0 {
+			mi = min(mi, i+n/i)
 		}
 	}
+	fmt.Println(mi - 2)
+}
 
-	fmt.Println(min)
+func min(a, b int)int{
+	if a > b{
+		return b
+	}
+	return a
 }
