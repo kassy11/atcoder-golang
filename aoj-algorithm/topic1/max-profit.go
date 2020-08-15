@@ -13,13 +13,30 @@ func main() {
 		fmt.Scan(&nums[i])
 	}
 
-	max := nums[1] - nums[0]
-	for i:=0; i<len(nums); i++{
-		for j:=i+1; j<len(nums); j++{
-			if nums[j]-nums[i] > max{
-				max = nums[j] - nums[i]
-			}
-		}
+	maxv := nums[1] - nums[0]
+	minv := nums[0]
+
+	for i:=1; i<len(nums); i++{
+		// 最小値との差を考えることで最大値を得る
+		maxv = max(maxv, nums[i]- minv)
+
+		// 最小値を記録していく
+		minv = min(minv, nums[i])
 	}
-	fmt.Println(max)
+
+	fmt.Println(maxv)
+}
+
+func max(x, y int)int{
+	if x > y{
+		return x
+	}
+	return y
+}
+
+func min(x, y int)int{
+	if x > y{
+		return y
+	}
+	return x
 }
