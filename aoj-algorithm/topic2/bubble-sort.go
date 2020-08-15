@@ -14,15 +14,12 @@ func main() {
 
 func bubbleSort(nums []int){
 	count := 0
-	flag := true
-	for flag{
-		flag = false
-		for i := len(nums)-1; i>0; i--{
-			if nums[i] < nums[i-1]{
-				tmp := nums[i-1]
-				nums[i-1] = nums[i]
-				nums[i] = tmp
-				flag = true
+	for i:=0; i<len(nums); i++{
+		for j:=len(nums)-1; j>i; j--{
+			if nums[j-1] > nums[j]{
+				tmp := nums[j]
+				nums[j] = nums[j-1]
+				nums[j-1] = tmp
 				count++
 			}
 		}
