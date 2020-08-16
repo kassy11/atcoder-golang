@@ -2,23 +2,39 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"math/big"
 )
 
 func main() {
 	var x, k, d int
 	fmt.Scan(&x, &k, &d)
-	var min int
 
-	min = 1000000000
-	for i:=0; i<k; i++{
-		if math.Abs(float64(x) - float64(d)) < float64(min){
-			min = int(math.Abs(float64(x) - float64(d)))
-			x = x -d
-		}else if math.Abs(float64(x) + float64(d)) < float64(min){
-			min = int(math.Abs(float64(x) + float64(d)))
-			x = x + d
-		}
+	fmt.Println(solve(x, k, d))
+}
+
+func solve(X, K, D int) int {
+	if X < 0 {
+		X = -X
 	}
-	fmt.Println(min)
+
+	if cmp(X, K, D) {
+		return X - K*D
+	}
+
+	k := X / D
+	x := X - D*k
+	d := K - k
+	if d%2 == 0 {
+		return x
+	} else {
+		return D - x
+	}
+}
+
+func cmp(X, K, D int) bool {
+	x := big.NewInt(int64(X))
+	k := big.NewInt(int64(K))
+	d := big.NewInt(int64(D))
+
+	return 0 < x.Cmp(k.Mul(k, d))
 }
