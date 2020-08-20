@@ -1,3 +1,5 @@
+// コマンドライン引数の渡し方
+
 package main
 
 import (
