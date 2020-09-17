@@ -10,11 +10,11 @@ func main() {
 		fmt.Scan(&cards[i])
 	}
 
-	selectionSort(cards)
-	bubbleSort(cards)
+	selection(cards)
+	bubble(cards)
 }
 
-func selectionSort(nums []string){
+func selection(nums []string){
 
 	for i := 0; i < len(nums); i++ {
 		minj := i
@@ -38,7 +38,7 @@ func selectionSort(nums []string){
 	}
 }
 
-func bubbleSort(nums []string){
+func bubble(nums []string){
 	for i:=0; i<len(nums); i++{
 		for j:=len(nums)-1; j>i; j--{
 			if nums[j-1][1:] > nums[j][1:]{

@@ -1,4 +1,3 @@
-// https://shoman.hatenablog.com/entry/2020/02/25/185456
 
 package main
 
@@ -10,15 +9,13 @@ import (
 	"strings"
 )
 
-// Stackは[]intのエイリアス
+// Stackは[]stringのエイリアス
 type Stack []string
 
-// Push adds an element
 func (s *Stack) Push(v string) {
 	*s = append(*s, v)
 }
 
-// Pop removes the top element and return it
 func (s *Stack) Pop() (string, error) {
 	if s.Empty() {
 		return "error", fmt.Errorf("stack is empty")
@@ -29,7 +26,6 @@ func (s *Stack) Pop() (string, error) {
 	return v, nil
 }
 
-// Peek returns the top value
 func (s *Stack) Peek() (string, error) {
 	if s.Empty() {
 		return "error", fmt.Errorf("stack is empty")
@@ -38,17 +34,14 @@ func (s *Stack) Peek() (string, error) {
 	return (*s)[len(*s)-1], nil
 }
 
-// Size returns the length of stack
 func (s *Stack) Size() int {
 	return len(*s)
 }
 
-// Empty returns true when stack is empty
 func (s *Stack) Empty() bool {
 	return s.Size() == 0
 }
 
-// NewStack generates stack
 func NewStack() *Stack {
 	s := new(Stack)
 	return s
@@ -60,19 +53,44 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	s, _ := reader.ReadString('\n')
 	s = strings.TrimSpace(s)
-	n, _ := strconv.Atoi(s)
+	str := strings.Split(s, " ")
 
-	t := strings.Split(s, " ")
-	for i:=0; i<n; i++{
-		fmt.Println(t[i])
-		stack.Push(t[i])
+	for i:=0; i<len(str); i++{
+		switch str[i] {
+		case "+":
+			pop1, _ := stack.Pop()
+			pop2, _ := stack.Pop()
+			num1, _ := strconv.Atoi(pop1)
+			num2, _ := strconv.Atoi(pop2)
+			stack.Push(string(num1 + num2))
+			break
+		case "-":
+			pop1, _ := stack.Pop()
+			pop2, _ := stack.Pop()
+			num1, _ := strconv.Atoi(pop1)
+			num2, _ := strconv.Atoi(pop2)
+			stack.Push(string(num1 - num2))
+			break
+		case "*":
+			pop1, _ := stack.Pop()
+			pop2, _ := stack.Pop()
+			num1, _ := strconv.Atoi(pop1)
+			num2, _ := strconv.Atoi(pop2)
+			fmt.Println(num1, num2)
+			stack.Push(string(num1 * num2))
+			break
+		case "/":
+			pop1, _ := stack.Pop()
+			pop2, _ := stack.Pop()
+			num1, _ := strconv.Atoi(pop1)
+			num2, _ := strconv.Atoi(pop2)
+			fmt.Println(num1, num2)
+			stack.Push(string(num1 / num2))
+			break
+		default:
+			stack.Push(str[i])
+			break
+		}
 	}
-
 	fmt.Println(*stack)
-
-	//for i:=0; i<stack.Size(); i++{
-	//	switch  {
-	//
-	//	}
-	//}
 }
